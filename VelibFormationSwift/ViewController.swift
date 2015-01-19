@@ -14,13 +14,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let cellIdentifier = "cellIdentifier"
     var dataSource = [String]()
     
-    @IBOutlet var myTableView : UITableView?
+    @IBOutlet var myTableView : UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Setting this avoid cells to display ??
-       //self.myTableView?.registerClass(StationTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+       //self.myTableView.registerClass(StationTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
         for i in 1..<101 {
             self.dataSource.append("index \(i)")
@@ -36,10 +36,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = self.myTableView?.dequeueReusableCellWithIdentifier(self.cellIdentifier) as StationTableViewCell
+        var cell = self.myTableView.dequeueReusableCellWithIdentifier(self.cellIdentifier) as StationTableViewCell
         
-        cell.nameLabel?.text = self.dataSource[indexPath.row]
-        cell.addressLabel?.text = "toto"
+        cell.nameLabel.text = self.dataSource[indexPath.row]
+        cell.addressLabel.text = "toto"
         return cell
     }
     
