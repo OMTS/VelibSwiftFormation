@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C3364B31A52042000290F35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3364B21A52042000290F35 /* AppDelegate.swift */; };
 		9C3364B61A52042000290F35 /* VelibFormationSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C3364B41A52042000290F35 /* VelibFormationSwift.xcdatamodeld */; };
-		9C3364B81A52042000290F35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3364B71A52042000290F35 /* ViewController.swift */; };
+		9C3364B81A52042000290F35 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3364B71A52042000290F35 /* ListViewController.swift */; };
 		9C3364BB1A52042000290F35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C3364B91A52042000290F35 /* Main.storyboard */; };
 		9C3364BD1A52042000290F35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C3364BC1A52042000290F35 /* Images.xcassets */; };
 		9C3364C01A52042000290F35 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C3364BE1A52042000290F35 /* LaunchScreen.xib */; };
@@ -40,6 +40,7 @@
 		9CD49C731A6DB81A006ADD86 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C591A6DB81A006ADD86 /* UIImageView+WebCache.m */; };
 		9CD49C741A6DB81A006ADD86 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C5B1A6DB81A006ADD86 /* UIView+WebCacheOperation.m */; };
 		9CD49C771A6DB828006ADD86 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C761A6DB828006ADD86 /* StationTableViewCell.swift */; };
+		9CD49C791A6DC090006ADD86 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C781A6DC090006ADD86 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +58,7 @@
 		9C3364B11A52042000290F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C3364B21A52042000290F35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C3364B51A52042000290F35 /* VelibFormationSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VelibFormationSwift.xcdatamodel; sourceTree = "<group>"; };
-		9C3364B71A52042000290F35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9C3364B71A52042000290F35 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		9C3364BA1A52042000290F35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C3364BC1A52042000290F35 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9C3364BF1A52042000290F35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -117,6 +118,7 @@
 		9CD49C5A1A6DB81A006ADD86 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		9CD49C5B1A6DB81A006ADD86 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		9CD49C761A6DB828006ADD86 /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
+		9CD49C781A6DC090006ADD86 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +163,8 @@
 				9CD49C751A6DB828006ADD86 /* Cells */,
 				9CD49C251A6DB81A006ADD86 /* Libs */,
 				9C3364B21A52042000290F35 /* AppDelegate.swift */,
-				9C3364B71A52042000290F35 /* ViewController.swift */,
+				9C3364B71A52042000290F35 /* ListViewController.swift */,
+				9CD49C781A6DC090006ADD86 /* MapViewController.swift */,
 				9C3364B91A52042000290F35 /* Main.storyboard */,
 				9C3364BC1A52042000290F35 /* Images.xcassets */,
 				9C3364BE1A52042000290F35 /* LaunchScreen.xib */,
@@ -379,7 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C3364B81A52042000290F35 /* ViewController.swift in Sources */,
+				9C3364B81A52042000290F35 /* ListViewController.swift in Sources */,
 				9CD49C711A6DB81A006ADD86 /* UIImage+WebP.m in Sources */,
 				9CD49C601A6DB81A006ADD86 /* AFSecurityPolicy.m in Sources */,
 				9C3364B61A52042000290F35 /* VelibFormationSwift.xcdatamodeld in Sources */,
@@ -392,6 +395,7 @@
 				9CD49C5E1A6DB81A006ADD86 /* AFHTTPSessionManager.m in Sources */,
 				9CD49C5F1A6DB81A006ADD86 /* AFNetworkReachabilityManager.m in Sources */,
 				9CD49C681A6DB81A006ADD86 /* SDWebImageCompat.m in Sources */,
+				9CD49C791A6DC090006ADD86 /* MapViewController.swift in Sources */,
 				9CD49C661A6DB81A006ADD86 /* NSData+ImageContentType.m in Sources */,
 				9CD49C631A6DB81A006ADD86 /* AFURLResponseSerialization.m in Sources */,
 				9CD49C6C1A6DB81A006ADD86 /* SDWebImageManager.m in Sources */,

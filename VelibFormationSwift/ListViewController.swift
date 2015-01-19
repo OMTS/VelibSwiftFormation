@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let fakeData = ["line 1","line 2","line 3"]
     let cellIdentifier = "cellIdentifier"
@@ -46,6 +46,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("cell \(indexPath.row) tapped")
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "mapSegue") {
+            NSLog("mapSegue")
+        }
+        else {
+            NSLog("else")
+        }
     }
 }
 
