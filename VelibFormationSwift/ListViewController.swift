@@ -50,11 +50,17 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "mapSegue") {
+        if segue.identifier == "mapSegue" {
             NSLog("mapSegue")
         }
-        else {
-            NSLog("else")
+        else if segue.identifier == "detailSegue" {
+            if let detailVC = segue.destinationViewController as? DetailViewController {
+                if let cell = sender as? StationTableViewCell {
+                    if let indexPath = self.myTableView.indexPathForCell(cell) {
+                      detailVC.stationName = self.dataSource[indexPath.row]
+                    }
+                }
+            }
         }
     }
 }

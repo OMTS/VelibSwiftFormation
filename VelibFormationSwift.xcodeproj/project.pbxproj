@@ -41,6 +41,7 @@
 		9CD49C741A6DB81A006ADD86 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C5B1A6DB81A006ADD86 /* UIView+WebCacheOperation.m */; };
 		9CD49C771A6DB828006ADD86 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C761A6DB828006ADD86 /* StationTableViewCell.swift */; };
 		9CD49C791A6DC090006ADD86 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C781A6DC090006ADD86 /* MapViewController.swift */; };
+		9CD49C7B1A6DC7E3006ADD86 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C7A1A6DC7E3006ADD86 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		9CD49C5B1A6DB81A006ADD86 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		9CD49C761A6DB828006ADD86 /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		9CD49C781A6DC090006ADD86 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9CD49C7A1A6DC7E3006ADD86 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				9C3364B21A52042000290F35 /* AppDelegate.swift */,
 				9C3364B71A52042000290F35 /* ListViewController.swift */,
 				9CD49C781A6DC090006ADD86 /* MapViewController.swift */,
+				9CD49C7A1A6DC7E3006ADD86 /* DetailViewController.swift */,
 				9C3364B91A52042000290F35 /* Main.storyboard */,
 				9C3364BC1A52042000290F35 /* Images.xcassets */,
 				9C3364BE1A52042000290F35 /* LaunchScreen.xib */,
@@ -401,6 +404,7 @@
 				9CD49C6C1A6DB81A006ADD86 /* SDWebImageManager.m in Sources */,
 				9CD49C6A1A6DB81A006ADD86 /* SDWebImageDownloader.m in Sources */,
 				9CD49C731A6DB81A006ADD86 /* UIImageView+WebCache.m in Sources */,
+				9CD49C7B1A6DC7E3006ADD86 /* DetailViewController.swift in Sources */,
 				9CD49C721A6DB81A006ADD86 /* UIImageView+HighlightedWebCache.m in Sources */,
 				9CD49C651A6DB81A006ADD86 /* MKAnnotationView+WebCache.m in Sources */,
 				9CD49C6F1A6DB81A006ADD86 /* UIImage+GIF.m in Sources */,

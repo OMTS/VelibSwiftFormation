@@ -113,6 +113,7 @@
                                             <outlet property="addressLabel" destination="tO5-gO-4BB" id="ezh-3n-Zjc"/>
                                             <outlet property="avatarView" destination="3dZ-OU-Jsp" id="dBR-iJ-X7M"/>
                                             <outlet property="nameLabel" destination="vZM-O7-mOx" id="fXr-1u-yU8"/>
+                                            <segue destination="t23-0w-ryD" kind="show" identifier="detailSegue" id="a6h-fu-xIC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -188,6 +189,23 @@
             </objects>
             <point key="canvasLocation" x="1249.5" y="360.75"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="bMF-LD-RIz">
+            <objects>
+                <viewController id="t23-0w-ryD" customClass="DetailViewController" customModule="VelibFormationSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bNW-W4-VGz"/>
+                        <viewControllerLayoutGuide type="bottom" id="91P-EZ-NhM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SDF-qO-CZA">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xIX-Jz-LMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2026.5" y="360.75"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="cr6-yp-I0S">
             <objects>
@@ -261,7 +279,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2085" y="242.25"/>
+            <point key="canvasLocation" x="1249.5" y="1068.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="t6V-ZR-gNZ">
