@@ -14,8 +14,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         static let kApiPath = "/vls/v1/stations"
         static let kImageURlString = "http://www.yankodesign.com/images/design_news/2013/10/17/flexi_bike.jpg"
     }
-    
-    let fakeData = ["line 1","line 2","line 3"]
     let cellIdentifier = "cellIdentifier"
     var dataSource = [Dictionary<String, AnyObject>]?()
 
