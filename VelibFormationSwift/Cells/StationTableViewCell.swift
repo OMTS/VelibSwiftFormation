@@ -13,22 +13,25 @@ class StationTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel : UILabel!
     @IBOutlet var addressLabel : UILabel!
     @IBOutlet var avatarView : UIImageView!
+
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureView()
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        configureView()
     }
     
     
-    func configureView() {
-        
-    }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if !self.avatarView.layer.masksToBounds {
+            self.avatarView.layer.cornerRadius = 15.0
+            self.avatarView.layer.masksToBounds = true
+        }
+    }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

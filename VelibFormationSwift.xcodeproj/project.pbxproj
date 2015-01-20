@@ -14,6 +14,7 @@
 		9C3364BD1A52042000290F35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C3364BC1A52042000290F35 /* Images.xcassets */; };
 		9C3364C01A52042000290F35 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C3364BE1A52042000290F35 /* LaunchScreen.xib */; };
 		9C3364CC1A52042000290F35 /* VelibFormationSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3364CB1A52042000290F35 /* VelibFormationSwiftTests.swift */; };
+		9C84F8111A6EBCEA006E2FA0 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84F8101A6EBCEA006E2FA0 /* APIClient.swift */; };
 		9CD49C5C1A6DB81A006ADD86 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C281A6DB81A006ADD86 /* AFHTTPRequestOperation.m */; };
 		9CD49C5D1A6DB81A006ADD86 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C2A1A6DB81A006ADD86 /* AFHTTPRequestOperationManager.m */; };
 		9CD49C5E1A6DB81A006ADD86 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C2C1A6DB81A006ADD86 /* AFHTTPSessionManager.m */; };
@@ -66,6 +67,8 @@
 		9C3364C51A52042000290F35 /* VelibFormationSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VelibFormationSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3364CA1A52042000290F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C3364CB1A52042000290F35 /* VelibFormationSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelibFormationSwiftTests.swift; sourceTree = "<group>"; };
+		9C84F8101A6EBCEA006E2FA0 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Services/APIClient.swift; sourceTree = "<group>"; };
+		9CA91CCE1A6EABA300015DEE /* VelibFormationSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VelibFormationSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		9CD49C271A6DB81A006ADD86 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		9CD49C281A6DB81A006ADD86 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		9CD49C291A6DB81A006ADD86 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -162,6 +165,7 @@
 		9C3364AF1A52042000290F35 /* VelibFormationSwift */ = {
 			isa = PBXGroup;
 			children = (
+				9C84F80F1A6EB9DF006E2FA0 /* Service */,
 				9CD49C751A6DB828006ADD86 /* Cells */,
 				9CD49C251A6DB81A006ADD86 /* Libs */,
 				9C3364B21A52042000290F35 /* AppDelegate.swift */,
@@ -181,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				9C3364B11A52042000290F35 /* Info.plist */,
+				9CA91CCE1A6EABA300015DEE /* VelibFormationSwift-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -200,6 +205,14 @@
 				9C3364CA1A52042000290F35 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9C84F80F1A6EB9DF006E2FA0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9C84F8101A6EBCEA006E2FA0 /* APIClient.swift */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 		9CD49C251A6DB81A006ADD86 /* Libs */ = {
@@ -388,6 +401,7 @@
 				9C3364B81A52042000290F35 /* ListViewController.swift in Sources */,
 				9CD49C711A6DB81A006ADD86 /* UIImage+WebP.m in Sources */,
 				9CD49C601A6DB81A006ADD86 /* AFSecurityPolicy.m in Sources */,
+				9C84F8111A6EBCEA006E2FA0 /* APIClient.swift in Sources */,
 				9C3364B61A52042000290F35 /* VelibFormationSwift.xcdatamodeld in Sources */,
 				9CD49C5D1A6DB81A006ADD86 /* AFHTTPRequestOperationManager.m in Sources */,
 				9CD49C611A6DB81A006ADD86 /* AFURLConnectionOperation.m in Sources */,
@@ -476,6 +490,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -495,6 +510,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "VelibFormationSwift/VelibFormationSwift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -518,6 +534,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -530,6 +547,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "VelibFormationSwift/VelibFormationSwift-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -541,6 +559,7 @@
 				INFOPLIST_FILE = VelibFormationSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VelibFormationSwift/VelibFormationSwift-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -551,6 +570,7 @@
 				INFOPLIST_FILE = VelibFormationSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VelibFormationSwift/VelibFormationSwift-Bridging-Header.h";
 			};
 			name = Release;
 		};
