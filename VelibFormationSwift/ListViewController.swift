@@ -63,7 +63,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let detailVC = segue.destinationViewController as? DetailViewController {
                 if let cell = sender as? StationTableViewCell {
                     if let indexPath = self.myTableView.indexPathForCell(cell) {
-                     // detailVC.stationName = self.dataSource[indexPath.row]
+                      detailVC.stationName = self.dataSource![indexPath.row]["name"] as? String
                     }
                 }
             }
@@ -72,7 +72,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func getRemoteStations () {
         
-        let params = [APIClient.APIClientConstants.kApiContractParamName :APIClient.APIClientConstants.kApiContractParamValue,
+        let params = [APIClient.APIClientConstants.kApiContractParamKey :APIClient.APIClientConstants.kApiContractParamValue,
             APIClient.APIClientConstants.kApiKeyParamKey:APIClient.APIClientConstants.kApiKeyParamValue]
         
         APIClient.sharedInstance.GET(ViewControllerDefines.kApiPath, parameters: params,

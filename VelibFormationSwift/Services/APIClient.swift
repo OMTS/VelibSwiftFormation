@@ -15,7 +15,7 @@ class APIClient : AFHTTPSessionManager {
         static let kApiKeyParamValue = "cd982b2f6008d5560b48a2d31cb6d3ad44f11fca"
         static let kApiKeyParamKey = "apiKey"
         static let kApiContractParamValue = "paris"
-        static let kApiContractParamName = "contract"
+        static let kApiContractParamKey = "contract"
     }
     
     //computed property
