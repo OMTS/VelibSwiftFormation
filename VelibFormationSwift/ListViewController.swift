@@ -17,7 +17,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     let cellIdentifier = "cellIdentifier"
     var dataSource = [Dictionary<String, AnyObject>]?()
-    var realmDataSource : AnyObject?
+    var realmDataSource : RLMResults?
     var token : RLMNotificationToken?
 
     @IBOutlet var myTableView : UITableView!
@@ -40,8 +40,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let numberOfRows = self.realmDataSource?.count {
-            return numberOfRows
+        if let dataSource = self.realmDataSource {
+            return Int(dataSource.count)
         }
         else {
           return 0
@@ -51,7 +51,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = self.myTableView.dequeueReusableCellWithIdentifier(self.cellIdentifier) as StationTableViewCell
         
-        if let realmResult = self.realmDataSource as? RLMResults {
+        if let realmResult = self.realmDataSource {
             if let currentStation = realmResult[UInt(indexPath.row)] as? Station {
                 cell.nameLabel.text = currentStation.name
                 cell.addressLabel.text = currentStation.address
@@ -76,7 +76,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let detailVC = segue.destinationViewController as? DetailViewController {
                 if let cell = sender as? StationTableViewCell {
                     if let indexPath = self.myTableView.indexPathForCell(cell) {
-                      detailVC.station = self.realmDataSource![indexPath.row] as? Station
+                      detailVC.station = self.realmDataSource![UInt(indexPath.row)] as? Station
                     }
                 }
             }
