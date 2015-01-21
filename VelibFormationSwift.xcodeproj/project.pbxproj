@@ -43,6 +43,10 @@
 		9CD49C771A6DB828006ADD86 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C761A6DB828006ADD86 /* StationTableViewCell.swift */; };
 		9CD49C791A6DC090006ADD86 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C781A6DC090006ADD86 /* MapViewController.swift */; };
 		9CD49C7B1A6DC7E3006ADD86 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C7A1A6DC7E3006ADD86 /* DetailViewController.swift */; };
+		9CDAABAF1A7048EC006A61E4 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDAABAD1A7048EC006A61E4 /* Realm.framework */; };
+		9CDAABB01A7048EC006A61E4 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAABAE1A7048EC006A61E4 /* RLMSupport.swift */; };
+		9CDAABB21A704917006A61E4 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDAABB11A704917006A61E4 /* libc++.dylib */; };
+		9CDAABB51A70495E006A61E4 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAABB41A70495E006A61E4 /* Station.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +128,10 @@
 		9CD49C761A6DB828006ADD86 /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		9CD49C781A6DC090006ADD86 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9CD49C7A1A6DC7E3006ADD86 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9CDAABAD1A7048EC006A61E4 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		9CDAABAE1A7048EC006A61E4 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
+		9CDAABB11A704917006A61E4 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		9CDAABB41A70495E006A61E4 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +139,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CDAABB21A704917006A61E4 /* libc++.dylib in Frameworks */,
+				9CDAABAF1A7048EC006A61E4 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +175,7 @@
 		9C3364AF1A52042000290F35 /* VelibFormationSwift */ = {
 			isa = PBXGroup;
 			children = (
+				9CDAABB31A704934006A61E4 /* Models */,
 				9C84F80F1A6EB9DF006E2FA0 /* Service */,
 				9CD49C751A6DB828006ADD86 /* Cells */,
 				9CD49C251A6DB81A006ADD86 /* Libs */,
@@ -184,6 +195,8 @@
 		9C3364B01A52042000290F35 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9CDAABB11A704917006A61E4 /* libc++.dylib */,
+				9CDAABAC1A7048EC006A61E4 /* Frameworks */,
 				9C3364B11A52042000290F35 /* Info.plist */,
 				9CA91CCE1A6EABA300015DEE /* VelibFormationSwift-Bridging-Header.h */,
 			);
@@ -298,6 +311,23 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		9CDAABAC1A7048EC006A61E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9CDAABAD1A7048EC006A61E4 /* Realm.framework */,
+				9CDAABAE1A7048EC006A61E4 /* RLMSupport.swift */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		9CDAABB31A704934006A61E4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9CDAABB41A70495E006A61E4 /* Station.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -399,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C3364B81A52042000290F35 /* ListViewController.swift in Sources */,
+				9CDAABB01A7048EC006A61E4 /* RLMSupport.swift in Sources */,
 				9CD49C711A6DB81A006ADD86 /* UIImage+WebP.m in Sources */,
 				9CD49C601A6DB81A006ADD86 /* AFSecurityPolicy.m in Sources */,
 				9C84F8111A6EBCEA006E2FA0 /* APIClient.swift in Sources */,
@@ -429,6 +460,7 @@
 				9CD49C691A6DB81A006ADD86 /* SDWebImageDecoder.m in Sources */,
 				9CD49C741A6DB81A006ADD86 /* UIView+WebCacheOperation.m in Sources */,
 				9C3364B31A52042000290F35 /* AppDelegate.swift in Sources */,
+				9CDAABB51A70495E006A61E4 /* Station.swift in Sources */,
 				9CD49C771A6DB828006ADD86 /* StationTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +588,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VelibFormationSwift",
+					"$(PROJECT_DIR)/VelibFormationSwift/Frameworks",
+				);
 				INFOPLIST_FILE = VelibFormationSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -567,6 +604,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VelibFormationSwift",
+					"$(PROJECT_DIR)/VelibFormationSwift/Frameworks",
+				);
 				INFOPLIST_FILE = VelibFormationSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

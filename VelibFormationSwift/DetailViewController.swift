@@ -10,11 +10,11 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    var stationName : String?
+    var station : Station?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = stationName
+        self.title = station?.name
         // Do any additional setup after loading the view.
     }
 

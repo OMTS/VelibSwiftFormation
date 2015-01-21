@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Realm
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,12 +17,21 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     let cellIdentifier = "cellIdentifier"
     var dataSource = [Dictionary<String, AnyObject>]?()
+    var realmDataSource : AnyObject?
+    var token : RLMNotificationToken?
 
     @IBOutlet var myTableView : UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getRemoteStations()
+        // Observe Realm Notifications
+        let realm = RLMRealm.defaultRealm()
+
+        self.token = realm.addNotificationBlock { note, realm in
+            self.updateUI()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,7 +39,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let numberOfRows = self.dataSource?.count {
+        if let numberOfRows = self.realmDataSource?.count {
             return numberOfRows
         }
         else {
@@ -40,12 +50,14 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = self.myTableView.dequeueReusableCellWithIdentifier(self.cellIdentifier) as StationTableViewCell
         
-        cell.nameLabel.text = self.dataSource![indexPath.row]["name"] as? String
-        cell.addressLabel.text = self.dataSource![indexPath.row]["address"] as? String
-        
-        let url = NSURL(string: ViewControllerDefines.kImageURlString)
-        cell.avatarView.sd_setImageWithURL(url, placeholderImage:UIImage(named: "images"))
-
+        if let realmResult = self.realmDataSource as? RLMResults {
+            if let currentStation = realmResult[UInt(indexPath.row)] as? Station {
+                cell.nameLabel.text = currentStation.name
+                cell.addressLabel.text = currentStation.address
+            }
+            let url = NSURL(string: ViewControllerDefines.kImageURlString)
+            cell.avatarView.sd_setImageWithURL(url, placeholderImage:UIImage(named: "images"))
+        }
         return cell
     }
     
@@ -63,7 +75,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let detailVC = segue.destinationViewController as? DetailViewController {
                 if let cell = sender as? StationTableViewCell {
                     if let indexPath = self.myTableView.indexPathForCell(cell) {
-                      detailVC.stationName = self.dataSource![indexPath.row]["name"] as? String
+                      detailVC.station = self.realmDataSource![indexPath.row] as? Station
                     }
                 }
             }
@@ -71,7 +83,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func getRemoteStations () {
-        
         let params = [APIClient.APIClientConstants.kApiContractParamKey :APIClient.APIClientConstants.kApiContractParamValue,
             APIClient.APIClientConstants.kApiKeyParamKey:APIClient.APIClientConstants.kApiKeyParamValue]
         
@@ -79,16 +90,63 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             success:{
                 (task: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
                 
-                var test : AnyObject!  = responseObject
-                //can force this test variable to any type to test the optional behavior 
-                //e.g test = 3 or test = "a random string"
-                //self.dataSource should be nil then
-                self.dataSource = test as? Array<Dictionary<String,AnyObject>>
-                self.myTableView.reloadData()
+                //Doing the Local DB populating in background to test Realm perf
+                let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+                dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                    // do some task
+                    var test : AnyObject!  = responseObject
+                    //can force this test variable to any type to test the optional behavior
+                    //e.g test = 3 or test = "a random string"
+                    //self.dataSource should be nil then
+                    // self.dataSource = test as? Array<Dictionary<String,AnyObject>>
+                    if let arrayOfStations = test as? Array<Dictionary<String,AnyObject>> {
+                        let timeElapsed = self.populateLocalDb(array: arrayOfStations)
+                        println("\(timeElapsed)s elapsed populating")
+                    }
+                }
+                
             },
             failure:{(task: NSURLSessionDataTask!, error: NSError!) -> Void in
                 print("Reponse Failure \(error)")
         })
     }
+
+    func populateLocalDb(#array : Array<Dictionary<String,AnyObject>>) -> NSTimeInterval {
+        let before = NSDate()
+        let realm = RLMRealm.defaultRealm()
+        realm.beginWriteTransaction()
+
+        for station in array {
+            let currentStation = Station.createOrUpdateInDefaultRealmWithObject(station)
+        }
+        realm.commitWriteTransaction()
+        let after = NSDate()
+        return after.timeIntervalSinceDate(before)
+    }
+    
+    func reloadDataFromLocalDB (#ordered: Bool) -> (nbObjects : UInt, results: RLMResults,elapsedTime: NSTimeInterval){
+        let before = NSDate()
+        var resultsToReturn : RLMResults
+        if !ordered {
+            resultsToReturn = Station.allObjects()
+        }
+        else {
+            resultsToReturn = Station.allObjects().sortedResultsUsingProperty("name", ascending: true)
+        }
+        let after = NSDate()
+        
+        return (resultsToReturn.count,resultsToReturn,after.timeIntervalSinceDate(before))
+    }
+    
+    func updateUI() {
+        let localTuplet = self.reloadDataFromLocalDB(ordered: true)
+        self.realmDataSource = localTuplet.results
+        println("\(localTuplet.nbObjects) Objects Fetched and \(localTuplet.elapsedTime)s elapsed locally fetching")
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.myTableView.reloadData()
+        })
+    }
 }
+
+
 
