@@ -26,9 +26,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         getRemoteStations()
+        updateUI()
+        
         // Observe Realm Notifications
         let realm = RLMRealm.defaultRealm()
-
         self.token = realm.addNotificationBlock { note, realm in
             self.updateUI()
         }
