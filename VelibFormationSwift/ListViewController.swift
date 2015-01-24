@@ -12,23 +12,25 @@ import Realm
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     struct ViewControllerDefines {
-        static let kApiPath = "/vls/v1/stations"
         static let kImageURlString = "http://www.yankodesign.com/images/design_news/2013/10/17/flexi_bike.jpg"
     }
+    @IBOutlet var myTableView : UITableView!
+
     let cellIdentifier = "cellIdentifier"
     var dataSource = [Dictionary<String, AnyObject>]?()
     var realmDataSource : RLMResults?
     var token : RLMNotificationToken?
-
-    @IBOutlet var myTableView : UITableView!
-    
+    var stationsService : NSURLSessionTask?
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initUI()
         getRemoteStations()
         updateUI()
         
         // Observe Realm Notifications
+        
         let realm = RLMRealm.defaultRealm()
         self.token = realm.addNotificationBlock { note, realm in
             self.updateUI()
@@ -37,6 +39,15 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func initUI() {
+        //hack to make refrsh control available in our UIViewController subclass
+       let tableVC = UITableViewController()
+        tableVC.tableView = self.myTableView
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull To Refresh")
+        self.refreshControl.addTarget(self, action:"getRemoteStations", forControlEvents: .ValueChanged)
+        tableVC.refreshControl = self.refreshControl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,45 +95,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func getRemoteStations () {
-        let params = [APIClient.APIClientConstants.kApiContractParamKey :APIClient.APIClientConstants.kApiContractParamValue,
-            APIClient.APIClientConstants.kApiKeyParamKey:APIClient.APIClientConstants.kApiKeyParamValue]
-        
-        APIClient.sharedInstance.GET(ViewControllerDefines.kApiPath, parameters: params,
-            success:{
-                (task: NSURLSessionDataTask!, responseObject: AnyObject!) -> Void in
-                
-                //Doing the Local DB populating in background to test Realm perf
-                let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-                dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                    // do some task
-                    var test : AnyObject!  = responseObject
-                    //can force this test variable to any type to test the optional behavior
-                    //e.g test = 3 or test = "a random string"
-                    //self.dataSource should be nil then
-                    // self.dataSource = test as? Array<Dictionary<String,AnyObject>>
-                    if let arrayOfStations = test as? Array<Dictionary<String,AnyObject>> {
-                        let timeElapsed = self.populateLocalDb(array: arrayOfStations)
-                        println("\(timeElapsed)s elapsed populating")
-                    }
-                }
-                
-            },
-            failure:{(task: NSURLSessionDataTask!, error: NSError!) -> Void in
-                print("Reponse Failure \(error)")
-        })
-    }
-
-    func populateLocalDb(#array : Array<Dictionary<String,AnyObject>>) -> NSTimeInterval {
-        let before = NSDate()
-        let realm = RLMRealm.defaultRealm()
-        realm.beginWriteTransaction()
-
-        for station in array {
-            let currentStation = Station.createOrUpdateInDefaultRealmWithObject(station)
-        }
-        realm.commitWriteTransaction()
-        let after = NSDate()
-        return after.timeIntervalSinceDate(before)
+        self.stationsService = StationService().getStations();
     }
     
     func reloadDataFromLocalDB (#ordered: Bool) -> (nbObjects : UInt, results: RLMResults,elapsedTime: NSTimeInterval){
@@ -142,6 +115,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func updateUI() {
         let localTuplet = self.reloadDataFromLocalDB(ordered: true)
         self.realmDataSource = localTuplet.results
+        self.refreshControl.endRefreshing()
         println("\(localTuplet.nbObjects) Objects Fetched and \(localTuplet.elapsedTime)s elapsed locally fetching")
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.myTableView.reloadData()

@@ -7,20 +7,27 @@
 //
 
 import Realm
+import MapKit
+
+class Position: RLMObject {
+    dynamic var lat = 0.0
+    dynamic var lng = 0.0
+}
 
 // Station model
 class Station: RLMObject {
     dynamic var number = 0
     dynamic var name = ""
     dynamic var address = ""
-    dynamic var lat : Double = 0.0
-    dynamic var lng : Double = 0.0
-    dynamic var nbBikesAvailable = 0
-    dynamic var nbStandsAvailable = 0
+    dynamic var available_bikes = 0
+    dynamic var available_bike_stands = 0
+    dynamic var position = Position()
     dynamic var imageURL = ""
     
     override class func primaryKey() -> String {
         return "number"
     }
 }
+
+
 
