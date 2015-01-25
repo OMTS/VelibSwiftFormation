@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import MapKit
+import Realm
 
-class MapViewController: UIViewController,UINavigationBarDelegate {
+class MapViewController: StationsViewController,UINavigationBarDelegate {
 
+    var realmDataSource : RLMResults?
+    @IBOutlet var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,16 +24,39 @@ class MapViewController: UIViewController,UINavigationBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    override func updateUI() {
+        let localTuplet = self.reloadDataFromLocalDB(ordered: true)
+        self.realmDataSource = localTuplet.results
+        //We can work on the RLMResults collection directly here to create an array of StationAnnotations and add it to the map
+        //But we first transform the RLMResult into a regular Array just to test
+        //The Swift Array's map function
+        //Just for fun, not for perf obviously
+        var stationArray = [Station]()
+        for station in self.realmDataSource! {
+            if let stationObj = station as? Station {
+                stationArray.append(stationObj)
+            }
+        }
+        //This is the FUN !!! 
+        //YIIIIHAAAAA the map function
+        let stationsAnnotations = stationArray.map { (station:Station) -> StationAnnotation in
+            let coordinates = CLLocationCoordinate2D(latitude: station.position.lat, longitude: station.position.lng)
+            return StationAnnotation(coordinate:coordinates, title: station.name, subtitle: station.address)
+        }
+        //first line will remove old Annotations
+        //second line will add new Annotations
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        self.mapView.addAnnotations(stationsAnnotations)
+    
+        //A better approach (but maybe a bit overkill here) 
+        //would be to compute (on a background queue)
+        //the array of new stations and add them, and only them to the map
+        //given the fact that stations are added not often 
+        //and never removed in real life
+        
+        println("Number of annotations on the map (should stay constant) \(self.mapView.annotations.count)")
     }
-    */
 
     @IBAction func gobackToList(sender : AnyObject) {
         if sender is UIButton {
@@ -53,6 +79,10 @@ class MapViewController: UIViewController,UINavigationBarDelegate {
             NSLog("CANNOT CAST BUTTON")
         }
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func reloadRemoteData(sender : AnyObject) {
+        self.getRemoteStations()
     }
     
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {

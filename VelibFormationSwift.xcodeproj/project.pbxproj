@@ -14,6 +14,7 @@
 		9C3364BD1A52042000290F35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C3364BC1A52042000290F35 /* Images.xcassets */; };
 		9C3364C01A52042000290F35 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C3364BE1A52042000290F35 /* LaunchScreen.xib */; };
 		9C3364CC1A52042000290F35 /* VelibFormationSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3364CB1A52042000290F35 /* VelibFormationSwiftTests.swift */; };
+		9C3C98D31A745F1F00421FB5 /* StationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3C98D21A745F1F00421FB5 /* StationsViewController.swift */; };
 		9C84F8111A6EBCEA006E2FA0 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84F8101A6EBCEA006E2FA0 /* APIClient.swift */; };
 		9CD0929D1A72AA9C001BD570 /* StationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD0929C1A72AA9C001BD570 /* StationService.swift */; };
 		9CD49C5C1A6DB81A006ADD86 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C281A6DB81A006ADD86 /* AFHTTPRequestOperation.m */; };
@@ -73,6 +74,7 @@
 		9C3364C51A52042000290F35 /* VelibFormationSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VelibFormationSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3364CA1A52042000290F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C3364CB1A52042000290F35 /* VelibFormationSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelibFormationSwiftTests.swift; sourceTree = "<group>"; };
+		9C3C98D21A745F1F00421FB5 /* StationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsViewController.swift; sourceTree = "<group>"; };
 		9C84F8101A6EBCEA006E2FA0 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Services/APIClient.swift; sourceTree = "<group>"; };
 		9CA91CCE1A6EABA300015DEE /* VelibFormationSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VelibFormationSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		9CD0929C1A72AA9C001BD570 /* StationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationService.swift; path = Services/StationService.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				9CD49C751A6DB828006ADD86 /* Cells */,
 				9CD49C251A6DB81A006ADD86 /* Libs */,
 				9C3364B21A52042000290F35 /* AppDelegate.swift */,
+				9C3C98D21A745F1F00421FB5 /* StationsViewController.swift */,
 				9C3364B71A52042000290F35 /* ListViewController.swift */,
 				9CD49C781A6DC090006ADD86 /* MapViewController.swift */,
 				9CD49C7A1A6DC7E3006ADD86 /* DetailViewController.swift */,
@@ -438,6 +441,7 @@
 				9CDAABB01A7048EC006A61E4 /* RLMSupport.swift in Sources */,
 				9CD49C711A6DB81A006ADD86 /* UIImage+WebP.m in Sources */,
 				9CD49C601A6DB81A006ADD86 /* AFSecurityPolicy.m in Sources */,
+				9C3C98D31A745F1F00421FB5 /* StationsViewController.swift in Sources */,
 				9C84F8111A6EBCEA006E2FA0 /* APIClient.swift in Sources */,
 				9C3364B61A52042000290F35 /* VelibFormationSwift.xcdatamodeld in Sources */,
 				9CD49C5D1A6DB81A006ADD86 /* AFHTTPRequestOperationManager.m in Sources */,

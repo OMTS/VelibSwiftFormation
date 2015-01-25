@@ -82,14 +82,14 @@
                                                     <exclude reference="3dZ-OU-Jsp"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="f6c-jv-0zD"/>
-                                                    <exclude reference="kxX-5g-KPL"/>
-                                                    <exclude reference="0Ad-bq-gNG"/>
-                                                    <exclude reference="rIO-Vd-rrv"/>
-                                                    <exclude reference="ubJ-67-ICv"/>
                                                     <exclude reference="162-h6-SeO"/>
                                                     <exclude reference="jjF-73-4sH"/>
                                                     <exclude reference="wQt-uV-jAo"/>
+                                                    <exclude reference="0Ad-bq-gNG"/>
+                                                    <exclude reference="rIO-Vd-rrv"/>
+                                                    <exclude reference="ubJ-67-ICv"/>
+                                                    <exclude reference="f6c-jv-0zD"/>
+                                                    <exclude reference="kxX-5g-KPL"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -99,14 +99,14 @@
                                                     <include reference="3dZ-OU-Jsp"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="f6c-jv-0zD"/>
-                                                    <include reference="kxX-5g-KPL"/>
-                                                    <include reference="0Ad-bq-gNG"/>
-                                                    <include reference="rIO-Vd-rrv"/>
-                                                    <include reference="ubJ-67-ICv"/>
                                                     <include reference="162-h6-SeO"/>
                                                     <include reference="jjF-73-4sH"/>
                                                     <include reference="wQt-uV-jAo"/>
+                                                    <include reference="0Ad-bq-gNG"/>
+                                                    <include reference="rIO-Vd-rrv"/>
+                                                    <include reference="ubJ-67-ICv"/>
+                                                    <include reference="f6c-jv-0zD"/>
+                                                    <include reference="kxX-5g-KPL"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -248,19 +248,19 @@
                                 <exclude reference="CPl-LZ-EzL"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="E3S-U0-Jh6"/>
-                                <exclude reference="Egx-kI-qbS"/>
-                                <exclude reference="zdH-w6-WIu"/>
+                                <exclude reference="X8P-av-tQk"/>
                                 <exclude reference="39Z-Yv-GqH"/>
                                 <exclude reference="94d-4z-elw"/>
                                 <exclude reference="vhe-hY-2cl"/>
+                                <exclude reference="E3S-U0-Jh6"/>
+                                <exclude reference="Egx-kI-qbS"/>
+                                <exclude reference="zdH-w6-WIu"/>
                                 <exclude reference="DZz-Ps-PNg"/>
                                 <exclude reference="reg-V1-wn3"/>
                                 <exclude reference="y8s-u0-BYi"/>
                                 <exclude reference="7cO-3G-IFD"/>
                                 <exclude reference="UCJ-DR-AdD"/>
                                 <exclude reference="pBP-XG-PWB"/>
-                                <exclude reference="X8P-av-tQk"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -271,19 +271,19 @@
                                 <include reference="CPl-LZ-EzL"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="E3S-U0-Jh6"/>
-                                <include reference="Egx-kI-qbS"/>
-                                <include reference="zdH-w6-WIu"/>
+                                <include reference="X8P-av-tQk"/>
                                 <include reference="39Z-Yv-GqH"/>
                                 <include reference="94d-4z-elw"/>
                                 <include reference="vhe-hY-2cl"/>
+                                <include reference="E3S-U0-Jh6"/>
+                                <include reference="Egx-kI-qbS"/>
+                                <include reference="zdH-w6-WIu"/>
                                 <include reference="DZz-Ps-PNg"/>
                                 <include reference="reg-V1-wn3"/>
                                 <include reference="y8s-u0-BYi"/>
                                 <include reference="7cO-3G-IFD"/>
                                 <include reference="UCJ-DR-AdD"/>
                                 <include reference="pBP-XG-PWB"/>
-                                <include reference="X8P-av-tQk"/>
                             </mask>
                         </variation>
                     </view>
@@ -320,6 +320,11 @@
                                         <barButtonItem key="leftBarButtonItem" title="List" id="0XW-TV-PYX">
                                             <connections>
                                                 <action selector="gobackToList:" destination="UuF-eA-4xi" id="Hhf-50-LXS"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="z3K-Hm-v5f">
+                                            <connections>
+                                                <action selector="reloadRemoteData:" destination="UuF-eA-4xi" id="RdT-3N-4mL"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -368,6 +373,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="Stq-KS-SJl" id="WmI-ig-Jos"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tg2-uU-uXs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

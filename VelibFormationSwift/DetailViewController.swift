@@ -49,6 +49,4 @@ class DetailViewController: UIViewController {
         let region = MKCoordinateRegion(center: coordinates, span: span)
         self.mapView.setRegion(region, animated: true)
     }
-
-
 }
