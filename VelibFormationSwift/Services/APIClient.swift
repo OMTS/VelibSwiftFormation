@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Iman Zarrabian. All rights reserved.
 //
 
-
 class APIClient : AFHTTPSessionManager {
     
     //this struct will be accessible from outside
@@ -31,4 +30,5 @@ class APIClient : AFHTTPSessionManager {
         }
         return Static.instance!
     }
+
 }

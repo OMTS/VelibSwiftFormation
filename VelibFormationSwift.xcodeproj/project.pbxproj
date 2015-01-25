@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		9C3364B31A52042000290F35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3364B21A52042000290F35 /* AppDelegate.swift */; };
-		9C3364B61A52042000290F35 /* VelibFormationSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C3364B41A52042000290F35 /* VelibFormationSwift.xcdatamodeld */; };
 		9C3364B81A52042000290F35 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3364B71A52042000290F35 /* ListViewController.swift */; };
 		9C3364BB1A52042000290F35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C3364B91A52042000290F35 /* Main.storyboard */; };
 		9C3364BD1A52042000290F35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C3364BC1A52042000290F35 /* Images.xcassets */; };
 		9C3364C01A52042000290F35 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C3364BE1A52042000290F35 /* LaunchScreen.xib */; };
 		9C3364CC1A52042000290F35 /* VelibFormationSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3364CB1A52042000290F35 /* VelibFormationSwiftTests.swift */; };
 		9C3C98D31A745F1F00421FB5 /* StationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3C98D21A745F1F00421FB5 /* StationsViewController.swift */; };
+		9C3C98D51A746C2D00421FB5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3C98D41A746C2D00421FB5 /* User.swift */; };
+		9C3C98D71A746DCF00421FB5 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3C98D61A746DCF00421FB5 /* UserManager.swift */; };
 		9C84F8111A6EBCEA006E2FA0 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84F8101A6EBCEA006E2FA0 /* APIClient.swift */; };
 		9CD0929D1A72AA9C001BD570 /* StationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD0929C1A72AA9C001BD570 /* StationService.swift */; };
 		9CD49C5C1A6DB81A006ADD86 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD49C281A6DB81A006ADD86 /* AFHTTPRequestOperation.m */; };
@@ -66,7 +67,6 @@
 		9C3364AD1A52042000290F35 /* VelibFormationSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VelibFormationSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3364B11A52042000290F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C3364B21A52042000290F35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9C3364B51A52042000290F35 /* VelibFormationSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VelibFormationSwift.xcdatamodel; sourceTree = "<group>"; };
 		9C3364B71A52042000290F35 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		9C3364BA1A52042000290F35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C3364BC1A52042000290F35 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -75,6 +75,8 @@
 		9C3364CA1A52042000290F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C3364CB1A52042000290F35 /* VelibFormationSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelibFormationSwiftTests.swift; sourceTree = "<group>"; };
 		9C3C98D21A745F1F00421FB5 /* StationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsViewController.swift; sourceTree = "<group>"; };
+		9C3C98D41A746C2D00421FB5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9C3C98D61A746DCF00421FB5 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		9C84F8101A6EBCEA006E2FA0 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Services/APIClient.swift; sourceTree = "<group>"; };
 		9CA91CCE1A6EABA300015DEE /* VelibFormationSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VelibFormationSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		9CD0929C1A72AA9C001BD570 /* StationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationService.swift; path = Services/StationService.swift; sourceTree = "<group>"; };
@@ -193,7 +195,6 @@
 				9C3364B91A52042000290F35 /* Main.storyboard */,
 				9C3364BC1A52042000290F35 /* Images.xcassets */,
 				9C3364BE1A52042000290F35 /* LaunchScreen.xib */,
-				9C3364B41A52042000290F35 /* VelibFormationSwift.xcdatamodeld */,
 				9C3364B01A52042000290F35 /* Supporting Files */,
 			);
 			path = VelibFormationSwift;
@@ -333,6 +334,8 @@
 			children = (
 				9CDAABB41A70495E006A61E4 /* Station.swift */,
 				9CE8CA0A1A73EFE000A2BA66 /* StationAnnotation.swift */,
+				9C3C98D41A746C2D00421FB5 /* User.swift */,
+				9C3C98D61A746DCF00421FB5 /* UserManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -439,11 +442,11 @@
 			files = (
 				9C3364B81A52042000290F35 /* ListViewController.swift in Sources */,
 				9CDAABB01A7048EC006A61E4 /* RLMSupport.swift in Sources */,
+				9C3C98D71A746DCF00421FB5 /* UserManager.swift in Sources */,
 				9CD49C711A6DB81A006ADD86 /* UIImage+WebP.m in Sources */,
 				9CD49C601A6DB81A006ADD86 /* AFSecurityPolicy.m in Sources */,
 				9C3C98D31A745F1F00421FB5 /* StationsViewController.swift in Sources */,
 				9C84F8111A6EBCEA006E2FA0 /* APIClient.swift in Sources */,
-				9C3364B61A52042000290F35 /* VelibFormationSwift.xcdatamodeld in Sources */,
 				9CD49C5D1A6DB81A006ADD86 /* AFHTTPRequestOperationManager.m in Sources */,
 				9CE8CA0B1A73EFE000A2BA66 /* StationAnnotation.swift in Sources */,
 				9CD49C611A6DB81A006ADD86 /* AFURLConnectionOperation.m in Sources */,
@@ -455,6 +458,7 @@
 				9CD49C5E1A6DB81A006ADD86 /* AFHTTPSessionManager.m in Sources */,
 				9CD49C5F1A6DB81A006ADD86 /* AFNetworkReachabilityManager.m in Sources */,
 				9CD49C681A6DB81A006ADD86 /* SDWebImageCompat.m in Sources */,
+				9C3C98D51A746C2D00421FB5 /* User.swift in Sources */,
 				9CD49C791A6DC090006ADD86 /* MapViewController.swift in Sources */,
 				9CD49C661A6DB81A006ADD86 /* NSData+ImageContentType.m in Sources */,
 				9CD49C631A6DB81A006ADD86 /* AFURLResponseSerialization.m in Sources */,
@@ -693,19 +697,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		9C3364B41A52042000290F35 /* VelibFormationSwift.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				9C3364B51A52042000290F35 /* VelibFormationSwift.xcdatamodel */,
-			);
-			currentVersion = 9C3364B51A52042000290F35 /* VelibFormationSwift.xcdatamodel */;
-			path = VelibFormationSwift.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 9C3364A51A52041F00290F35 /* Project object */;
 }

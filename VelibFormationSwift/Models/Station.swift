@@ -24,6 +24,10 @@ class Station: RLMObject {
     dynamic var position = Position()
     dynamic var imageURL = ""
     
+    //External To-One relationship
+    //has to be optional cause a station can be without a user
+    dynamic var user : User?
+
     override class func primaryKey() -> String {
         return "number"
     }

@@ -223,6 +223,16 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CPl-LZ-EzL">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auB-xn-q4w">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Fav it!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" title="Un-Fav it!"/>
+                                <connections>
+                                    <action selector="favOrUnFav:" destination="t23-0w-ryD" eventType="touchUpInside" id="3Wb-Os-3Mh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -234,10 +244,12 @@
                             <constraint firstItem="Zbi-DS-8gG" firstAttribute="leading" secondItem="SDF-qO-CZA" secondAttribute="leadingMargin" id="Egx-kI-qbS"/>
                             <constraint firstItem="CPl-LZ-EzL" firstAttribute="trailing" secondItem="SDF-qO-CZA" secondAttribute="trailingMargin" id="UCJ-DR-AdD"/>
                             <constraint firstItem="91P-EZ-NhM" firstAttribute="top" secondItem="CPl-LZ-EzL" secondAttribute="bottom" constant="20" id="X8P-av-tQk"/>
+                            <constraint firstItem="auB-xn-q4w" firstAttribute="trailing" secondItem="SDF-qO-CZA" secondAttribute="trailingMargin" id="dKC-Kt-Asz"/>
                             <constraint firstItem="CPl-LZ-EzL" firstAttribute="leading" secondItem="SDF-qO-CZA" secondAttribute="leadingMargin" id="pBP-XG-PWB"/>
                             <constraint firstItem="u8K-4r-tJM" firstAttribute="leading" secondItem="SDF-qO-CZA" secondAttribute="leadingMargin" id="reg-V1-wn3"/>
                             <constraint firstItem="KkF-yD-fXv" firstAttribute="trailing" secondItem="SDF-qO-CZA" secondAttribute="trailingMargin" id="vhe-hY-2cl"/>
                             <constraint firstItem="u8K-4r-tJM" firstAttribute="trailing" secondItem="SDF-qO-CZA" secondAttribute="trailingMargin" id="y8s-u0-BYi"/>
+                            <constraint firstItem="CPl-LZ-EzL" firstAttribute="top" secondItem="auB-xn-q4w" secondAttribute="bottom" constant="2" id="yM1-am-ncc"/>
                             <constraint firstItem="Zbi-DS-8gG" firstAttribute="trailing" secondItem="SDF-qO-CZA" secondAttribute="trailingMargin" id="zdH-w6-WIu"/>
                         </constraints>
                         <variation key="default">
@@ -246,21 +258,24 @@
                                 <exclude reference="KkF-yD-fXv"/>
                                 <exclude reference="u8K-4r-tJM"/>
                                 <exclude reference="CPl-LZ-EzL"/>
+                                <exclude reference="auB-xn-q4w"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="X8P-av-tQk"/>
-                                <exclude reference="39Z-Yv-GqH"/>
-                                <exclude reference="94d-4z-elw"/>
-                                <exclude reference="vhe-hY-2cl"/>
                                 <exclude reference="E3S-U0-Jh6"/>
                                 <exclude reference="Egx-kI-qbS"/>
                                 <exclude reference="zdH-w6-WIu"/>
+                                <exclude reference="39Z-Yv-GqH"/>
+                                <exclude reference="94d-4z-elw"/>
+                                <exclude reference="vhe-hY-2cl"/>
                                 <exclude reference="DZz-Ps-PNg"/>
                                 <exclude reference="reg-V1-wn3"/>
                                 <exclude reference="y8s-u0-BYi"/>
                                 <exclude reference="7cO-3G-IFD"/>
                                 <exclude reference="UCJ-DR-AdD"/>
                                 <exclude reference="pBP-XG-PWB"/>
+                                <exclude reference="yM1-am-ncc"/>
+                                <exclude reference="dKC-Kt-Asz"/>
+                                <exclude reference="X8P-av-tQk"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -269,26 +284,30 @@
                                 <include reference="KkF-yD-fXv"/>
                                 <include reference="u8K-4r-tJM"/>
                                 <include reference="CPl-LZ-EzL"/>
+                                <include reference="auB-xn-q4w"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="X8P-av-tQk"/>
-                                <include reference="39Z-Yv-GqH"/>
-                                <include reference="94d-4z-elw"/>
-                                <include reference="vhe-hY-2cl"/>
                                 <include reference="E3S-U0-Jh6"/>
                                 <include reference="Egx-kI-qbS"/>
                                 <include reference="zdH-w6-WIu"/>
+                                <include reference="39Z-Yv-GqH"/>
+                                <include reference="94d-4z-elw"/>
+                                <include reference="vhe-hY-2cl"/>
                                 <include reference="DZz-Ps-PNg"/>
                                 <include reference="reg-V1-wn3"/>
                                 <include reference="y8s-u0-BYi"/>
                                 <include reference="7cO-3G-IFD"/>
                                 <include reference="UCJ-DR-AdD"/>
                                 <include reference="pBP-XG-PWB"/>
+                                <include reference="yM1-am-ncc"/>
+                                <include reference="dKC-Kt-Asz"/>
+                                <include reference="X8P-av-tQk"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="addressLabel" destination="Zbi-DS-8gG" id="Z29-AN-UgM"/>
+                        <outlet property="favButton" destination="auB-xn-q4w" id="Z8L-Db-6gs"/>
                         <outlet property="mapView" destination="CPl-LZ-EzL" id="n7A-rC-Cc9"/>
                         <outlet property="nbBikesLabel" destination="KkF-yD-fXv" id="1qH-cs-79U"/>
                         <outlet property="nbStandsLabel" destination="u8K-4r-tJM" id="TT1-JV-MS9"/>

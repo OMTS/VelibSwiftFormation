@@ -91,7 +91,6 @@ class ListViewController: StationsViewController, UITableViewDelegate, UITableVi
             }
         }
     }
-
 }
 
 

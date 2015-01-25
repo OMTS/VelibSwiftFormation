@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Realm
 
 class DetailViewController: UIViewController {
 
@@ -17,9 +18,11 @@ class DetailViewController: UIViewController {
     @IBOutlet var nbBikesLabel: UILabel!
     @IBOutlet var nbStandsLabel: UILabel!
     @IBOutlet var mapView: MKMapView!
-    
+    @IBOutlet var favButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.favButton.selected = (self.station.user==nil ? false : true)
         updateUI()
         setStationRegion()
     }
@@ -48,5 +51,18 @@ class DetailViewController: UIViewController {
         let span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
         let region = MKCoordinateRegion(center: coordinates, span: span)
         self.mapView.setRegion(region, animated: true)
+    }
+    
+    @IBAction func favOrUnFav(sender : AnyObject) {
+        self.favButton.selected = !self.favButton.selected
+        let realm = RLMRealm.defaultRealm()
+        realm.beginWriteTransaction()
+        if self.favButton.selected {
+            self.station.user = UserManager.sharedInstance.currentUser
+        }
+        else {
+            self.station.user = nil
+        }
+        realm.commitWriteTransaction()
     }
 }
