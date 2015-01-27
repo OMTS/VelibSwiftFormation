@@ -19,6 +19,7 @@ class ListViewController: StationsViewController, UITableViewDelegate, UITableVi
     let cellIdentifier = "cellIdentifier"
     var realmDataSource : RLMResults?
     var refreshControl = UIRefreshControl()
+    var displayAll: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,26 +50,45 @@ class ListViewController: StationsViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let dataSource = self.realmDataSource {
-            return Int(dataSource.count)
+        if self.displayAll {
+            if let dataSource = self.realmDataSource {
+                return Int(dataSource.count)
+            }
+            else {
+                return 0
+            }
         }
         else {
-          return 0
+            let dataSource = UserManager.sharedInstance.currentUser!.stations
+            return Int(dataSource.count)
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = self.myTableView.dequeueReusableCellWithIdentifier(self.cellIdentifier) as StationTableViewCell
         
-        if let realmResult = self.realmDataSource {
-            if let currentStation = realmResult[UInt(indexPath.row)] as? Station {
-                cell.nameLabel.text = currentStation.name
-                cell.addressLabel.text = currentStation.address
+        if self.displayAll {
+            if let realmResult = self.realmDataSource {
+                if let currentStation = realmResult[UInt(indexPath.row)] as? Station {
+                    configureCell(cell, station: currentStation)
+                }
+                let url = NSURL(string: ViewControllerDefines.kImageURlString)
+                cell.avatarView.sd_setImageWithURL(url, placeholderImage:UIImage(named: "images"))
             }
-            let url = NSURL(string: ViewControllerDefines.kImageURlString)
-            cell.avatarView.sd_setImageWithURL(url, placeholderImage:UIImage(named: "images"))
         }
+        else {
+                configureCell(cell, station: UserManager.sharedInstance.currentUser!.stations[indexPath.row])
+                let url = NSURL(string: ViewControllerDefines.kImageURlString)
+                cell.avatarView.sd_setImageWithURL(url, placeholderImage:UIImage(named: "images"))
+            }
         return cell
+    }
+    
+    
+    func configureCell(cell: StationTableViewCell, station: Station) {
+        cell.nameLabel.text = station.name
+        cell.addressLabel.text = station.address
+        cell.favView.hidden = (station.user == nil)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -85,11 +105,21 @@ class ListViewController: StationsViewController, UITableViewDelegate, UITableVi
             if let detailVC = segue.destinationViewController as? DetailViewController {
                 if let cell = sender as? StationTableViewCell {
                     if let indexPath = self.myTableView.indexPathForCell(cell) {
-                      detailVC.station = self.realmDataSource![UInt(indexPath.row)] as? Station
+                        if  self.displayAll {
+                            detailVC.station = self.realmDataSource![UInt(indexPath.row)] as? Station
+                        }
+                        else {
+                            detailVC.station = UserManager.sharedInstance.currentUser!.stations[indexPath.row]
+                        }
                     }
                 }
             }
         }
+    }
+    
+    @IBAction func selectorChanged(sender: AnyObject?) {
+        self.displayAll = !self.displayAll
+        self.myTableView.reloadData()
     }
 }
 

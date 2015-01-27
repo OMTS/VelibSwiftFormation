@@ -22,7 +22,7 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.favButton.selected = (self.station.user==nil ? false : true)
+        self.favButton.selected = !(self.station.user == nil)
         updateUI()
         setStationRegion()
     }

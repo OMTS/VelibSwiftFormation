@@ -13,6 +13,7 @@ class StationTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel : UILabel!
     @IBOutlet var addressLabel : UILabel!
     @IBOutlet var avatarView : UIImageView!
+    @IBOutlet var favView : UIView!
 
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -23,8 +24,7 @@ class StationTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         if !self.avatarView.layer.masksToBounds {
