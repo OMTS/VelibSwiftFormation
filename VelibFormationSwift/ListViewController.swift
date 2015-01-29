@@ -9,9 +9,10 @@
 import UIKit
 import Realm
 
-class ListViewController: StationsViewController, UITableViewDelegate, UITableViewDataSource {
+class ListViewController: StationsViewController, UITableViewDelegate, UITableViewDataSource, DetailViewControllerDelegate {
     
     struct ViewControllerDefines {
+        //Same as static constant in C
         static let kImageURlString = "http://www.yankodesign.com/images/design_news/2013/10/17/flexi_bike.jpg"
     }
     @IBOutlet var myTableView : UITableView!
@@ -105,12 +106,13 @@ class ListViewController: StationsViewController, UITableViewDelegate, UITableVi
             if let detailVC = segue.destinationViewController as? DetailViewController {
                 if let cell = sender as? StationTableViewCell {
                     if let indexPath = self.myTableView.indexPathForCell(cell) {
-                        if  self.displayAll {
+                        if self.displayAll {
                             detailVC.station = self.realmDataSource![UInt(indexPath.row)] as? Station
                         }
                         else {
                             detailVC.station = UserManager.sharedInstance.currentUser!.stations[indexPath.row]
                         }
+                        detailVC.delegate = self
                     }
                 }
             }
@@ -120,6 +122,34 @@ class ListViewController: StationsViewController, UITableViewDelegate, UITableVi
     @IBAction func selectorChanged(sender: AnyObject?) {
         self.displayAll = !self.displayAll
         self.myTableView.reloadData()
+    }
+
+    func detailViewControllerDidfavUnFav(detailVC: DetailViewController, station: Station, faved: Bool) {
+        
+        //Carefull this makes user_id an Int? (Optional Int type)
+        //Because currentUser is a User? type
+        let user_id = UserManager.sharedInstance.currentUser?.user_id
+        let station_id = station.number
+        
+        //No need to do this in background
+        //But we are just testing realm here
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            let realm = RLMRealm.defaultRealm()
+            realm.beginWriteTransaction()
+            
+            if let thisThreadStation = Station.objectsWhere("number = \(station_id)").firstObject() as? Station {
+                if let thisThreadUser = User.objectsWhere("user_id = \(user_id!)").firstObject() as? User {
+                    if faved {
+                        thisThreadStation.user = thisThreadUser
+                    }
+                    else {
+                        thisThreadStation.user = nil
+                    }
+                    realm.commitWriteTransaction()
+                }
+            }
+        }
     }
 }
 

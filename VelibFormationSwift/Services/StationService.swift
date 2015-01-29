@@ -10,6 +10,7 @@ import Realm
 
 class StationService {
     struct RESTStationsAttributes {
+        //Same as static constant in C
         static let kStationsPath = "/vls/v1/stations"
         static let kStationDetailPath = "/vls/v1/stations/"
     }

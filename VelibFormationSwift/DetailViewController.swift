@@ -10,9 +10,16 @@ import UIKit
 import MapKit
 import Realm
 
+@objc protocol DetailViewControllerDelegate {
+    optional func detailViewControllerDidfavUnFav(detailVC: DetailViewController, station: Station, faved: Bool)
+
+}
+
+
 class DetailViewController: UIViewController {
 
     var station : Station!
+    var delegate: DetailViewControllerDelegate?
     
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var nbBikesLabel: UILabel!
@@ -55,14 +62,6 @@ class DetailViewController: UIViewController {
     
     @IBAction func favOrUnFav(sender : AnyObject) {
         self.favButton.selected = !self.favButton.selected
-        let realm = RLMRealm.defaultRealm()
-        realm.beginWriteTransaction()
-        if self.favButton.selected {
-            self.station.user = UserManager.sharedInstance.currentUser
-        }
-        else {
-            self.station.user = nil
-        }
-        realm.commitWriteTransaction()
+        self.delegate?.detailViewControllerDidfavUnFav?(self, station: self.station, faved : self.favButton.selected)
     }
 }

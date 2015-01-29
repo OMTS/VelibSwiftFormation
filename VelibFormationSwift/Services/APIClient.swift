@@ -10,14 +10,14 @@ class APIClient : AFHTTPSessionManager {
     
     //this struct will be accessible from outside
     struct APIClientConstants {
+        //Same as static constant in C
         static let kApiBaseUrl = "https://api.jcdecaux.com"
         static let kApiKeyParamValue = "cd982b2f6008d5560b48a2d31cb6d3ad44f11fca"
         static let kApiKeyParamKey = "apiKey"
         static let kApiContractParamValue = "paris"
         static let kApiContractParamKey = "contract"
     }
-    
-    //computed property
+    //Computed property
     class var sharedInstance: APIClient {
         //this struc won't be accessible from outside
         struct Static {
@@ -30,5 +30,4 @@ class APIClient : AFHTTPSessionManager {
         }
         return Static.instance!
     }
-
 }
